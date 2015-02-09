@@ -1,0 +1,22 @@
+    <div id="cadastrarProduto" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Cadastro de Produto</h1>
+      </div> 
+
+      <form>
+        <label for="inputNomeProduto">Nome do Produto:</label>
+        <input type="text" name="inputNomeProduto" id="inputNomeProduto" placeholder="Nome do Produto" value="">
+  
+        <label for="validade">Data de validade:</label>
+        <input type="date" data-clear-btn="false" name="validade" id="validade" value="">  
+      
+        <label for="quantidade">Quantidade:</label>
+        <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade" value=""> 
+        
+        <label for="valorProduto">Valor:</label>
+        <input type="text" name="valorProduto" id="valorProduto" placeholder="Valor do Produto" value="">
+
+        <input type="button" id="btnCadProd" value="Confirmar">        
+      </form>
+    </div>

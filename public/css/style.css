@@ -1,0 +1,108 @@
+/**{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}*/
+
+html{
+  font-size: 100%;
+  font-family: OpenSans, Arial;
+}
+
+body{
+  font-size: 1rem;
+  width: 800px;
+  margin: 0 auto;
+}
+
+
+.ui-li-static.ui-collapsible > .ui-collapsible-heading {
+    margin: 0;
+}
+.ui-li-static.ui-collapsible {
+    padding: 0;
+}
+.ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
+    border-top-width: 0;
+}
+.ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
+.ui-li-static.ui-collapsible > .ui-collapsible-content {
+    border-bottom-width: 0;
+}
+
+.ui-filter-inset {
+    margin-top: 0;
+}
+
+
+/* Lista Agendamentos */
+.movie-list thead th,
+.movie-list tbody tr:last-child {
+    border-bottom: 1px solid #d6d6d6; /* non-RGBA fallback */
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.movie-list tbody th,
+.movie-list tbody td {
+    border-bottom: 1px solid #e6e6e6; /* non-RGBA fallback  */
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.movie-list tbody tr:last-child th,
+.movie-list tbody tr:last-child td {
+    border-bottom: 0;
+}
+.movie-list tbody tr:nth-child(odd) td,
+.movie-list tbody tr:nth-child(odd) th {
+    background-color: #eeeeee; /* non-RGBA fallback  */
+    background-color: rgba(0,0,0,.04);
+}
+
+/* Fim Lista agendamentos */
+
+#topoAgendamento{
+	padding: 15px;
+}
+
+.tabela-servico{
+	width: 15em;
+}
+
+.tamanhoData{
+	width: 160px;
+}
+
+#divLogin{
+  margin: auto;
+  padding: 10px 40px 40px 40px;
+  
+}
+
+.ui-dialog-contain{
+  width: 20em;
+}
+
+@media print{
+  .notPrint{
+    display: none;
+  }
+}
+
+.rodape{
+  border-top: 1px solid gray;
+  
+}
+.rodape td:first-child{
+  text-align: center;
+}
+
+
+#divServAgend{
+  border-bottom: none;
+}
+
+.span{
+  margin-left: 40px;
+}
+
+.nomeServico{
+  font-weight: bold;
+}

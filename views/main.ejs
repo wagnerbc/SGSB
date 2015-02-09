@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>SGSB</title>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="/js/jquery.mobile-1.4.5/jquery.mobile.theme-1.4.5.css" />
+    
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+
+<!-- Página de Login -->
+    <div id="loginPage" data-role="page" data-dialog="true" data-close-btn="none">
+      <div data-role="header" data-theme="b">
+        <h1>Login</h1>
+      </div>
+
+      <div id="divLogin">
+        <form>
+          <label for="acessoLogin" >Login:</label>
+          <input type="text" name="acessoLogin" id="acessoLogin" placeholder="Usuário" value="">
+
+          <label for="acessoPassword">Senha:</label>
+          <input type="password" name="acessoPassword" id="acessoPassword" placeholder="Senha" value="">
+
+          <input id="btnLogin" type="button" value="Login">
+        </form>
+      </div>
+    </div>
+
+<!-- *********************************** -->
+<!-- Página inicial -->
+    <div id="menu" data-role="page">
+      <div data-role="header" data-theme="b">
+        <h1>Menu Principal</h1>
+      </div>
+      <div>
+        <ul data-role="listview" data-inset="true" data-shadow="false">
+          <li><a href="#agendamento">Agendamento</a></li>
+          <li data-role="collapsible" data-iconpos="right" data-inset="true">
+            <h2>Funcionário</h2>
+            <ul data-role="listview" data-theme="b">
+              <li><a href="#cadastrarFuncionario">Cadastrar</a></li>
+              <li><a href="#buscarFuncionario">Buscar - Alterar - Excluir</a></li>
+            </ul>
+          </li>
+          <li data-role="collapsible" data-iconpos="right" data-inset="true">
+            <h2>Cliente</h2>
+            <ul data-role="listview" data-theme="b">
+              <li><a href="#cadastrarCliente">Cadastrar</a></li>
+              <li><a href="#buscarCliente">Buscar - Alterar - Excluir</a></li>
+            </ul>
+          </li>
+          <li data-role="collapsible" data-iconpos="right" data-inset="true">
+            <h2>Produto</h2>
+            <ul data-role="listview" data-theme="b">
+              <li><a href="#cadastrarProduto">Cadastrar</a></li>
+              <li><a href="#buscarProduto">Buscar - Alterar - Excluir</a></li>
+            </ul>
+          </li>
+          <li data-role="collapsible" data-iconpos="right" data-inset="true">
+            <h2>Serviço</h2>
+              <ul data-role="listview" data-theme="b">
+                <li><a href="#cadastrarServico">Cadastrar</a></li>
+                <li><a href="#buscarServico">Buscar - Alterar - Excluir</a></li>
+                <li><a href="#registrarServico">Registrar Serviço realizado</a></li>
+              </ul>
+          </li>
+          <li data-role="collapsible" data-iconpos="right" data-inset="true">
+            <h2>Relatórios</h2>
+            <ul data-role="listview" data-theme="b">
+              <li><a href="#relatorioAgendamentos">Agendamentos</a></li>
+              <li><a href="#relAniversariantes">Aniversariantes</a></li>
+              <li><a href="#relatorioAtendimentosFuncionario">Atendimentos por Funcionário</a></li>
+              <li><a href="#relatorioAtendimentosGeral">Atendimentos - Geral</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+<!-- *********************************** -->
+
+<!-- Página Agendamento -->
+    <!-- <% include agendamento %>  -->
+    <div id="agendamento" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Agendamento</h1>
+      </div>
+      <form data-role="content">
+        <div class="ui-block-b" id="topoAgendamento">
+          <div class="ui-body ui-body-d">
+            <label for="dataAgendamento">Data do agendamento:</label>
+            <input type="date" data-clear-btn="false" name="dataAgendamento" id="dataAgendamento" value="" />
+            <label for="horaAgendamento">Hora:</label>
+            <input type="time" data-clear-btn="false" name="horaAgendamento" id="horaAgendamento" value="">
+          </div>
+        </div>
+
+        <div class="ui-block-c">
+          <div class="ui-body ui-body-d">
+            <table data-role="table" id="movie-table-custom" data-mode="reflow" class="ui-body-d ui-shadow table-stripe ui-responsive">
+            </table>
+          </div>
+        </div>
+        
+        <div class="ui-bar">
+            <label for="clienteAgendamento">Nome do Cliente:</label>
+            <div class="ui-filterable">
+              <input id="clienteAgendamento" data-type="search" placeholder="Nome do Cliente">
+            </div>
+            <ul id="autocompleteAgendamento" data-role="listview" data-inset="true" data-filter="true" data-input="#clienteAgendamento"></ul>
+
+            <div id="divServAgend" class="ui-filterable ui-field-contain">
+              <label for="agendServ">Serviço a ser realizado:</label>
+              <input id="agendServ" data-type="search" placeholder="Pesquisa valor do serviço">
+            </div>
+            <ul id="autocompleteAgendServ" data-role="listview" data-inset="true" data-filter="true" data-input="#agendServ"></ul>
+            
+            <textarea cols="40" rows="8" name="servicoAgendado" id="servicoAgendado" placeholder="Serviço a ser realizado"></textarea>
+
+            <label for="funcionarioAgendamento">Nome do Funcionário:</label>
+            <div class="ui-filterable">
+              <input id="funcionarioAgendamento" data-type="search" placeholder="Funcionário">
+            </div>
+            <ul id="autocompleteFuncionario" data-role="listview" data-inset="true" data-filter="true" data-input="#funcionarioAgendamento"></ul>    
+        
+            <input id="btnAgend" type="button" value="Confirmar">
+          <!-- </div> -->
+        </div>
+      </form>
+    </div>
+    
+<!-- *********************************** -->
+
+<!-- Página Cadastrar Funcionário -->
+    <!-- <% include cadastrarFuncionario %> -->
+
+    <div id="cadastrarFuncionario" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Cadastro de Funcionário</h1>
+      </div> 
+
+      <form>
+        <label for="inputNomeFuncionario">Nome do Funcionário:</label>
+        <input type="text" name="inputNomeFuncionario" id="inputNomeFuncionario" placeholder="Nome do Funcionário" value="">
+  
+        <label for="endereco">Endereço:</label>
+        <input type="text" name="endereco" id="enderecoRua" placeholder="Rua" value="">
+        <input type="text" name="endereco" id="enderecoNumero" placeholder="Número" value="">
+
+        <div class="tamanhoData">
+          <label for="inputFoneFuncionario">Tefefone:</label>
+          <input type="text" name="inputFoneFuncionario" id="inputFoneFuncionario" placeholder="Telefone" value="">    
+        </div>
+
+        <div class="tamanhoData">
+          <label for="dataNascimentoFuncionario">Data de nascimento:</label>
+          <input type="date" data-clear-btn="false" name="dataNascimentoFuncionario" id="dataNascimentoFuncionario" value="">  
+        </div>
+
+        <label for="inputCpfFuncionario">CPF:</label>
+        <input type="text" name="inputCpfFuncionario" id="inputCpfFuncionario" placeholder="CPF" value=""> 
+
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+          <legend>Sexo:</legend>
+            <input type="radio" name="radioSexo" id="radioMasculino" value="masculino" >
+            <label for="radioMasculino">Masculino</label>
+            <input type="radio" name="radioSexo" id="radioFeminino" value="feminino">
+            <label for="radioFeminino">Feminino</label>
+        </fieldset>
+
+        <label for="inputFuncaoFuncionario">Função:</label>
+        <input type="text" name="inputFuncaoFuncionario" id="inputFuncaoFuncionario" placeholder="Função" value=""> 
+
+        <div class="tamanhoData">
+          <label for="dataAdmissao">Data de Admissão:</label>
+          <input type="date" data-clear-btn="false" name="dataAdmissao" id="dataAdmissao" value="">
+        </div>
+
+        <label for="cursos">Cursos realizados:</label>
+        <textarea cols="40" rows="8" name="cursos" id="cursos" placeholder="Cursos realizados"></textarea>
+        
+        <label for="escolaridade">Escolaridade:</label>
+        <input type="text" name="escolaridade" id="escolaridade" placeholder="Escolaridade" value="">
+
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+          <legend>Estado Civil:</legend>
+          <input type="radio" name="radioEstadoCivil" id="radioSolteiro" value="solteiro">
+          <label for="radioSolteiro">Solteiro</label>
+          <input type="radio" name="radioEstadoCivil" id="radioCasado" value="casado">
+          <label for="radioCasado">Casado</label>
+        </fieldset>
+        
+        <div class="tamanhoData">
+          <label for="salario">Salário:</label>
+          <input type="text" name="salario" id="salario" placeholder="Salário" value=""> 
+
+          <label for="login">Login:</label>
+          <input type="text" name="login" id="login" placeholder="Login" value="">
+          
+          <label for="password">Senha:</label>
+          <input type="password" name="password" id="password" placeholder="Senha" value="">
+        </div>
+
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+          <legend>Nível de Permissão:</legend>
+          <input type="radio" name="radioPermissao" id="permissaoAdmin" value="administrador">
+          <label for="permissaoAdmin">Administrador</label>
+          <input type="radio" name="radioPermissao" id="permissaoComum" value="comum">
+          <label for="permissaoComum">Comum</label>
+        </fieldset>
+        
+
+        <input type="button" id="btnCadFunc" value="Confirmar">        
+      </form>
+    </div>
+
+<!-- *********************************** -->
+
+<!-- Página Buscar/Alterar/Excluir Funcionário -->
+
+    <% include buscarFuncionario %>
+    
+<!-- *********************************** -->
+
+<!-- Página exibir Funcionário -->
+    <!-- <% include exibirFuncionario %> -->
+    <div id="exibirFuncionario" data-role="page">
+  <div data-role="header" data-theme="b">
+    <a href="#buscarFuncionario" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+    <h1>Dados do Funcionário</h1>
+  </div> 
+
+  <form>
+    <label for="exibeNomeFuncionario">Nome do Funcionário:</label>
+    <input type="text" name="exibeNomeFuncionario" id="exibeNomeFuncionario" placeholder="Nome do Funcionário" value="">
+
+    <label for="endereco">Endereço:</label>
+    <input type="text" name="endereco" id="exibeRua" placeholder="Rua" value="">
+    <input type="text" name="endereco" id="exibeNumero" placeholder="Número" value="">
+
+    <label for="exibeFoneFuncionario">Tefefone:</label>
+    <input type="text" name="exibeFoneFuncionario" id="exibeFoneFuncionario" placeholder="Telefone" value="">    
+
+    <label for="exibeDataNascimento">Data de nascimento:</label>
+      <input type="date" data-clear-btn="false" name="exibeDataNascimento" id="exibeDataNascimento" value="">  
+  
+    <label for="exibeCpfFuncionario">CPF:</label>
+    <input type="text" name="exibeCpfFuncionario" id="exibeCpfFuncionario" placeholder="CPF" value=""> 
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Sexo:</legend>
+      <input type="radio" name="exibeSexo" id="exibeMasculino" value="masculino" >
+      <label for="exibeMasculino">Masculino</label>
+      <input type="radio" name="exibeSexo" id="exibeFeminino" value="feminino">
+      <label for="exibeFeminino">Feminino</label>
+    </fieldset>
+
+    <label for="exibeFuncao">Função:</label>
+    <input type="text" name="exibeFuncao" id="exibeFuncao" placeholder="Função" value=""> 
+
+    <label for="exibeDataAdmissao">Data de Admissão:</label>
+    <input type="date" data-clear-btn="false" name="exibeDataAdmissao" id="exibeDataAdmissao" value="">
+
+    <label for="exibeCursos">Cursos realizados:</label>
+    <textarea cols="40" rows="8" name="exibeCursos" id="exibeCursos" placeholder="Cursos realizados"></textarea>
+    
+    <label for="exibeEscolaridade">Escolaridade:</label>
+    <input type="text" name="exibeEscolaridade" id="exibeEscolaridade" placeholder="Escolaridade" value="">
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Estado Civil:</legend>
+      <input type="radio" name="exibeEstadoCivil" id="exibeSolteiro" value="solteiro">
+      <label for="exibeSolteiro">Solteiro</label>
+      <input type="radio" name="exibeEstadoCivil" id="exibeCasado" value="casado">
+      <label for="exibeCasado">Casado</label>
+    </fieldset>
+
+    <div class="tamanhoData">
+      <label for="exibeSalario">Salário:</label>
+      <input type="text" name="exibeSalario" id="exibeSalario" placeholder="Salário" value=""> 
+
+      <label for="exibeLogin">Login:</label>
+      <input type="text" name="exibeLogin" id="exibeLogin" placeholder="Login" value="">
+      
+      <label for="exibePassword">Senha:</label>
+      <input type="password" name="exibePassword" id="exibePassword" placeholder="Senha" value="">
+    </div>
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Nível de Permissão:</legend>
+      <input type="radio" name="exibePermissao" id="permissaoAdmin" value="administrador">
+      <label for="exibePermissaoAdmin">Administrador</label>
+      <input type="radio" name="exibePermissao" id="exibePermissaoComum" value="comum">
+      <label for="exibePermissaoComum">Comum</label>
+    </fieldset>  
+
+
+    <input type="button" data-inline="true" data-icon="delete" id="btnExcluirFunc" value="Excluir">
+    <input type="button" data-inline="true" data-icon="edit" id="btnAlterarFunc" value="Alterar">
+    <a href="#buscarFuncionario" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-inline" data-rel="back" >Cancelar</a>
+  
+  </form>
+</div>
+
+
+<!-- *********************************** -->
+
+<!-- Página Cadastrar Cliente -->
+
+    <% include cadastrarCliente %>
+
+<!-- *********************************** -->
+
+<!-- Página Buscar/Alterar/Excluir Cliente -->
+     <div id="buscarCliente" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Busca Cliente</h1>
+      </div> 
+
+      <form class="ui-filterable">
+        <input id="autocomplete-input-cli" data-type="search" placeholder="Nome do Cliente">
+      </form>
+      <ul id="autocomplete-cli" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input-cli"></ul> 
+
+    </div>
+<!-- *********************************** -->
+
+<!-- Página Exibir Cliente -->
+    <% include exibirCliente %>
+
+<!-- *********************************** -->
+
+<!-- Página Cadastrar Produto -->
+    <% include cadastrarProduto %>
+
+<!-- *********************************** -->
+
+<!-- Página Buscar/Alterar/Excluir Produto -->
+     <div id="buscarProduto" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Buscar Produto</h1>
+      </div> 
+
+      <form class="ui-filterable">
+        <input id="autocomplete-input-prod" data-type="search" placeholder="Nome do Produto">
+      </form>
+      <ul id="autocomplete-prod" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input-prod"></ul>
+    </div>
+<!-- *********************************** -->
+
+<!-- Página Exibir Produto -->
+    <% include exibirProduto%>
+
+<!-- *********************************** -->
+
+<!-- Página Cadastrar Servico -->
+    <% include cadastrarServico %>
+
+<!-- *********************************** -->
+
+<!-- Página Buscar/Alterar/Excluir Servico -->
+    <div id="buscarServico" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Busca de Serviço</h1>
+      </div> 
+
+      <form class="ui-filterable">
+        <input id="autocomplete-input-serv" data-type="search" placeholder="Nome do Serviço">
+      </form>
+      <ul id="autocomplete-serv" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input-serv"></ul>
+    </div>
+<!-- *********************************** -->
+
+<!-- Página Exibir Servico -->
+    <div id="exibirServico" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#buscarServico" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Dados do Serviço</h1>
+      </div> 
+
+      <form>
+        <label for="exibeNomeServico">Nome do Serviço:</label>
+        <input type="text" name="exibeNomeServico" id="exibeNomeServico" placeholder="Nome do Serviço" value="">
+
+        <label for="exibeValorMinimo">Valor mínimo:</label>
+        <input type="text" name="exibeValorMinimo" id="exibeValorMinimo" placeholder="Valor mínimo do serviço" value=""> 
+        
+        <label for="exibeValorMaximo">Valor máximo:</label>
+        <input type="text" name="exibeValorMaximo" id="exibeValorMaximo" placeholder="Valor máximo do serviço" value=""> 
+
+        <input type="button" data-inline="true" data-icon="delete" id="btnExcluirServ" value="Excluir">
+        <input type="button" data-inline="true" data-icon="edit" id="btnAlterarServ" value="Alterar">
+        <a href="#buscarServico" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-inline" data-rel="back" >Cancelar</a>
+      </form>
+    </div>
+<!-- *********************************** -->
+
+<!-- Página Registrar Servico Realizado -->
+    <!-- <% include registrarServico %> -->
+
+    <div id="registrarServico" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Resgistrar Serviço Realizado</h1>
+      </div> 
+
+      <form>
+        <label for="rsNomeCliente">Nome do Cliente:</label>
+          <div class="ui-filterable">
+            <input id="rsNomeCliente" data-type="search" placeholder="Nome do Cliente">
+          </div>
+        <ul id="autocompleteCliSr" data-role="listview" data-inset="true" data-filter="true" data-input="#rsNomeCliente"></ul>
+
+        <label>Serviço Realizado:</label>
+        <label for="rsNomeServico">Nome do Serviço:</label>
+          <div class="ui-filterable">
+            <input id="rsNomeServico" data-type="search" placeholder="Nome do Serviço">
+          </div>
+        <ul id="autocompleteServ" data-role="listview" data-inset="true" data-filter="true" data-input="#rsNomeServico"></ul>
+        
+        <label for="rsValorServico">Valor do serviço:</label>
+        <input type="text" name="rsValorServico" id="rsValorServico" placeholder="Valor do serviço" value=""> 
+        
+        <label for="rsNomeFuncionario">Nome do Funcionário:</label>
+          <div class="ui-filterable">
+            <input id="rsNomeFuncionario" data-type="search" placeholder="Nome do Funcionario">
+          </div>
+        <ul id="autocompleteFuncSr" data-role="listview" data-inset="true" data-filter="true" data-input="#rsNomeFuncionario"></ul>
+
+        <label for="rsProdutoUtilizado">Produto Utilizado:</label>
+          <div class="ui-filterable">
+            <input id="rsProdutoUtilizado" data-type="search" placeholder="Produto utilizado">
+          </div>
+        <ul id="autocompleteProdUtil" data-role="listview" data-inset="true" data-filter="true" data-input="#rsProdutoUtilizado"></ul>
+
+
+        <input type="button" id="btnAddServ" value="Acrescentar Serviço">
+
+        <label for="rsvalorTotal">Valor Total:</label>
+        <label id="rsValorTotal" for="rsvalorTotal">0</label>
+        <!-- <input type="text" name="rsvalorTotal" id="rsValorTotal" value="">  -->
+
+        <div class="tamanhoData">
+          <label for="dataServico">Data:</label>
+          <input type="date" name="dataServico" id="dataServico" value="">
+        </div>
+
+        <input type="button" id="btnCadServReal" value="Registrar">        
+      </form>
+    </div>
+
+<!-- *********************************** -->
+
+<!-- Página Gerar Relatório de Agendamentos -->
+    <div id="relatorioAgendamentos" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Relatório de Agendamentos</h1>
+      </div> 
+
+      <div>
+        <div class="notPrint">
+          <div class="tamanhoData">
+            <label for="raData">Data dos agendamentos:</label>
+            <input type="date" data-clear-btn="false" name="raData" id="raData" value=""> 
+          </div>
+
+          <input id="btnRelAgen" type="button" value="Gerar">
+        </div>
+        <div data-role="content">
+          <table data-role="table" id="tabelaRelAgendamento" data-mode="reflow" class="ui-body-d ui-shadow table-stripe ui-responsive">
+          </table>
+        </div>
+      </div>
+    </div>
+<!-- *********************************** -->
+
+<!-- Página Gerar Relatório de Aniversariantes -->
+    <div id="relAniversariantes" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Relatório de Aniversariantes</h1>
+      </div> 
+      
+      <div>
+        <div class="notPrint">
+          <div class="tamanhoData">
+            <label for="ranData">Data:</label>
+            <input type="date" data-clear-btn="false" name="ranData" id="ranData" value=""> 
+          </div>
+
+          <input id="btnRelAniv" type="button" value="Gerar">
+        </div>
+        <div data-role="content">
+          <table data-role="table" id="tabelaRelAniversariantes" data-mode="reflow" class="ui-body-d ui-shadow table-stripe ui-responsive">
+          </table>
+        </div>
+      </div>
+    </div>
+<!-- *********************************** -->
+
+<!-- Página Gerar Relatório de Atendimentos por Funcionário -->
+    <div id="relatorioAtendimentosFuncionario" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Relatório de Atendimentos por Funcionário</h1>
+      </div> 
+
+      <div>
+        <div class="notPrint">
+          <div class="tamanhoData">
+            <label for="rafData">Data:</label>
+            <input type="date" data-clear-btn="false" name="rafData" id="rafData" value=""> 
+          </div>
+
+          <label for="rafFuncionario">Nome do Funcionário:</label>
+            <div class="ui-filterable">
+              <input id="rafFuncionario" data-type="search" placeholder="Funcionário">
+            </div>
+            <ul id="autocompleteRafFuncionario" data-role="listview" data-inset="true" data-filter="true" data-input="#rafFuncionario"></ul>
+
+          <input id="btnRelAtendFunc" type="button" value="Gerar">
+        </div>
+        <div data-role="content">
+          <table data-role="table" id="tabelaRelAtendFunc" data-mode="reflow" class="ui-body-d ui-shadow table-stripe ui-responsive">
+          </table>
+        </div>
+      </div>
+    </div>
+<!-- *********************************** -->
+
+<!-- Página Gerar Relatório de Atendimentos por Funcionário -->
+    <div id="relatorioAtendimentosGeral" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Relatório de Atendimentos - Geral</h1>
+      </div> 
+
+      <div>
+        <div class="notPrint">
+          <div class="tamanhoData">
+            <label for="ragData">Data:</label>
+            <input type="date" data-clear-btn="false" name="ragData" id="ragData" value=""> 
+          </div>
+
+          <input id="btnRelAtendGeral" type="button" value="Gerar">
+        </div>
+        <div data-role="content">
+          <table data-role="table" id="tabelaRelAtendGeral" data-mode="reflow" class="ui-body-d ui-shadow table-stripe ui-responsive">
+          </table>
+        </div>
+      </div>
+    </div>
+<!-- *********************************** -->
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/funcionario.js"></script>
+    <script src="/js/cliente.js"></script>
+    <script src="/js/produto.js"></script>
+    <script src="/js/servico.js"></script>
+    <script src="/js/servicoRealizado.js"></script>
+    <script src="/js/agendamento.js"></script>
+    <script src="/js/relatorios.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
+
+  </body>
+</html>

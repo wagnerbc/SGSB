@@ -1,0 +1,40 @@
+<div id="cadastrarCliente" data-role="page">
+      <div data-role="header" data-theme="b">
+        <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+        <h1>Cadastro de Cliente</h1>
+      </div> 
+
+      <form>
+        <label for="inputNomeCliente">Nome do Cliente:</label>
+        <input type="text" name="inputNomeCliente" id="inputNomeCliente" placeholder="Nome do Cliente" value="">
+  
+        <label for="enderecoCliente">Endereço:</label>
+        <input type="text" name="enderecoCliente" id="enderecoClienteRua" placeholder="Rua" value="">
+        <input type="text" name="enderecoCliente" id="enderecoClienteNumero" placeholder="Número" value="">
+
+        <label for="inputFoneCliente">Tefefone:</label>
+        <input type="text" name="inputFoneCliente" id="inputFoneCliente" placeholder="Telefone" value="">    
+
+        <label for="dataNascimentoCliente">Data de nascimento:</label>
+        <input type="date" data-clear-btn="false" name="dataNascimentoCliente" id="dataNascimentoCliente" value="">  
+      
+        <label for="inputCpfCliente">CPF:</label>
+        <input type="text" name="inputCpfCliente" id="inputCpfCliente" placeholder="CPF" value=""> 
+
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+            <legend>Sexo:</legend>
+            <input type="radio" name="sexoCliente" id="sexoClienteMasc" value="masculino" >
+            <label for="sexoClienteMasc">Masculino</label>
+            <input type="radio" name="sexoCliente" id="sexoClienteFem" value="feminino">
+            <label for="sexoClienteFem">Feminino</label>
+        </fieldset> 
+
+        <label for="preferenciahorario">Preferências de Horário:</label>
+        <textarea cols="40" rows="8" name="preferenciahorario" id="preferenciahorario" placeholder="Preferências de Horário"></textarea>
+        
+        <label for="localTrabalho">Local de Trabalho:</label>
+        <input type="text" name="localTrabalho" id="localTrabalho" placeholder="Local de Trabalho" value="">
+
+        <input type="button" id="btnCadCli" value="Confirmar">        
+      </form>
+    </div>
