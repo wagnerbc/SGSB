@@ -1,0 +1,51 @@
+<div id="registrarServico" data-role="page">
+  <div data-role="header" data-theme="b">
+    <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+    <h1>Resgistrar Serviço Realizado</h1>
+  </div> 
+
+  <form>
+    <label for="rsNomeCliente">Nome do Cliente:</label>
+      <div class="ui-filterable">
+        <input id="rsNomeCliente" data-type="search" placeholder="Nome do Cliente">
+      </div>
+    <ul id="autocompleteCliSr" data-role="listview" data-inset="true" data-filter="true" data-input="#rsNomeCliente"></ul>
+
+    <label>Serviço Realizado:</label>
+    <label for="rsNomeServico">Nome do Serviço:</label>
+      <div class="ui-filterable">
+        <input id="rsNomeServico" data-type="search" placeholder="Nome do Serviço">
+      </div>
+    <ul id="autocompleteServ" data-role="listview" data-inset="true" data-filter="true" data-input="#rsNomeServico"></ul>
+    
+    <div class="tamanhoData">
+    <label for="rsValorServico">Valor do serviço:</label>
+    <input type="text" name="rsValorServico" id="rsValorServico" placeholder="Valor do serviço" value="">
+    </div> 
+    
+    <label for="rsNomeFuncionario">Nome do Funcionário:</label>
+      <div class="ui-filterable">
+        <input id="rsNomeFuncionario" data-type="search" placeholder="Nome do Funcionario">
+      </div>
+    <ul id="autocompleteFuncSr" data-role="listview" data-inset="true" data-filter="true" data-input="#rsNomeFuncionario"></ul>
+
+    <label for="rsProdutoUtilizado">Produto Utilizado:</label>
+      <div class="ui-filterable">
+        <input id="rsProdutoUtilizado" data-type="search" placeholder="Produto utilizado">
+      </div>
+    <ul id="autocompleteProdUtil" data-role="listview" data-inset="true" data-filter="true" data-input="#rsProdutoUtilizado"></ul>
+
+
+    <input type="button" id="btnAddServ" value="Acrescentar Serviço">
+
+    <label for="rsvalorTotal">Valor Total:</label>
+    <label id="rsValorTotal" for="rsvalorTotal">0</label>
+
+    <div class="tamanhoData">
+      <label for="dataServico">Data:</label>
+      <input type="date" name="dataServico" id="dataServico" value="">
+    </div>
+
+    <input type="button" id="btnCadServReal" value="Registrar">        
+  </form>
+</div>

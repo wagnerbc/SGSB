@@ -1,0 +1,76 @@
+<div id="exibirFuncionario" data-role="page">
+  <div data-role="header" data-theme="b">
+    <a href="#buscarFuncionario" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+    <h1>Dados do Funcionário</h1>
+  </div> 
+
+  <form>
+    <label for="exibeNomeFuncionario">Nome do Funcionário:</label>
+    <input type="text" name="exibeNomeFuncionario" id="exibeNomeFuncionario" placeholder="Nome do Funcionário" value="">
+
+    <label for="endereco">Endereço:</label>
+    <input type="text" name="endereco" id="exibeRua" placeholder="Rua" value="">
+    <input type="text" name="endereco" id="exibeNumero" placeholder="Número" value="">
+
+    <label for="exibeFoneFuncionario">Tefefone:</label>
+    <input type="text" name="exibeFoneFuncionario" id="exibeFoneFuncionario" placeholder="Telefone" value="">
+
+    <label for="exibeDataNascimento">Data de nascimento:</label>
+    <input type="date" data-clear-btn="false" name="exibeDataNascimento" id="exibeDataNascimento" value="">  
+  
+    <label for="exibeCpfFuncionario">CPF:</label>
+    <input type="text" name="exibeCpfFuncionario" id="exibeCpfFuncionario" placeholder="CPF" value=""> 
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Sexo:</legend>
+      <input type="radio" name="exibeSexo" id="exibeMasculino" value="masculino" >
+      <label for="exibeMasculino">Masculino</label>
+      <input type="radio" name="exibeSexo" id="exibeFeminino" value="feminino">
+      <label for="exibeFeminino">Feminino</label>
+    </fieldset>
+
+    <label for="exibeFuncao">Função:</label>
+    <input type="text" name="exibeFuncao" id="exibeFuncao" placeholder="Função" value=""> 
+
+    <label for="exibeDataAdmissao">Data de Admissão:</label>
+    <input type="date" data-clear-btn="false" name="exibeDataAdmissao" id="exibeDataAdmissao" value="">
+
+    <label for="exibeCursos">Cursos realizados:</label>
+    <textarea cols="40" rows="8" name="exibeCursos" id="exibeCursos" placeholder="Cursos realizados"></textarea>
+    
+    <label for="exibeEscolaridade">Escolaridade:</label>
+    <input type="text" name="exibeEscolaridade" id="exibeEscolaridade" placeholder="Escolaridade" value="">
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Estado Civil:</legend>
+      <input type="radio" name="exibeEstadoCivil" id="exibeSolteiro" value="solteiro">
+      <label for="exibeSolteiro">Solteiro</label>
+      <input type="radio" name="exibeEstadoCivil" id="exibeCasado" value="casado">
+      <label for="exibeCasado">Casado</label>
+    </fieldset>
+
+    <div class="tamanhoData">
+      <label for="exibeSalario">Salário:</label>
+      <input type="text" name="exibeSalario" id="exibeSalario" placeholder="Salário" value=""> 
+
+      <label for="exibeLogin">Login:</label>
+      <input type="text" name="exibeLogin" id="exibeLogin" placeholder="Login" value="">
+      
+      <label for="exibePassword">Senha:</label>
+      <input type="password" name="exibePassword" id="exibePassword" placeholder="Senha" value="">
+    </div>
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Nível de Permissão:</legend>
+      <input type="radio" name="exibePermissao" id="exibePermissaoAdmin" value="administrador">
+      <label for="exibePermissaoAdmin">Administrador</label>
+      <input type="radio" name="exibePermissao" id="exibePermissaoComum" value="comum">
+      <label for="exibePermissaoComum">Comum</label>
+    </fieldset>  
+
+
+    <input type="button" data-inline="true" data-icon="delete" id="btnExcluirFunc" value="Excluir">
+    <input type="button" data-inline="true" data-icon="edit" id="btnAlterarFunc" value="Alterar">
+    <a href="#buscarFuncionario" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-inline" data-rel="back" >Cancelar</a>
+  </form>
+</div>

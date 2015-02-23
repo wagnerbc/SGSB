@@ -1,0 +1,47 @@
+<div id="agendamento" data-role="page">
+  <div data-role="header" data-theme="b">
+    <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+    <h1>Agendamento</h1>
+  </div>
+  <form data-role="content">
+    <div class="ui-block-b" id="topoAgendamento">
+      <div class="ui-body ui-body-d">
+        <label for="dataAgendamento">Data do agendamento:</label>
+        <input type="date" data-clear-btn="false" name="dataAgendamento" id="dataAgendamento" value="" />
+        <label for="horaAgendamento">Hora:</label>
+        <input type="time" data-clear-btn="false" name="horaAgendamento" id="horaAgendamento" value="">
+      </div>
+    </div>
+
+    <div class="ui-block-c">
+      <div class="ui-body ui-body-d">
+        <table data-role="table" id="movie-table-custom" data-mode="reflow" class="ui-body-d ui-shadow table-stripe ui-responsive">
+        </table>
+      </div>
+    </div>
+    
+    <div class="ui-bar">
+      <label for="clienteAgendamento">Nome do Cliente:</label>
+      <div class="ui-filterable">
+        <input id="clienteAgendamento" data-type="search" placeholder="Nome do Cliente">
+      </div>
+      <ul id="autocompleteAgendamento" data-role="listview" data-inset="true" data-filter="true" data-input="#clienteAgendamento"></ul>
+
+      <div id="divServAgend" class="ui-filterable ui-field-contain">
+        <label for="agendServ">Serviço a ser realizado:</label>
+        <input id="agendServ" data-type="search" placeholder="Pesquisa valor do serviço">
+      </div>
+      <ul id="autocompleteAgendServ" data-role="listview" data-inset="true" data-filter="true" data-input="#agendServ"></ul>
+      
+      <textarea cols="40" rows="8" name="servicoAgendado" id="servicoAgendado" placeholder="Serviço a ser realizado"></textarea>
+
+      <label for="funcionarioAgendamento">Nome do Funcionário:</label>
+      <div class="ui-filterable">
+        <input id="funcionarioAgendamento" data-type="search" placeholder="Funcionário">
+      </div>
+      <ul id="autocompleteFuncionario" data-role="listview" data-inset="true" data-filter="true" data-input="#funcionarioAgendamento"></ul>    
+  
+      <input id="btnAgend" type="button" value="Confirmar">
+    </div>
+  </form>
+</div>

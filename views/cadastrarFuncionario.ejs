@@ -1,0 +1,80 @@
+<div id="cadastrarFuncionario" data-role="page">
+  <div data-role="header" data-theme="b">
+    <a href="#menu" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+    <h1>Cadastro de Funcionário</h1>
+  </div> 
+
+  <form>
+    <label for="inputNomeFuncionario">Nome do Funcionário:</label>
+    <input type="text" name="inputNomeFuncionario" id="inputNomeFuncionario" placeholder="Nome do Funcionário" value="">
+
+    <label for="endereco">Endereço:</label>
+    <input type="text" name="endereco" id="enderecoRua" placeholder="Rua" value="">
+    <input type="text" name="endereco" id="enderecoNumero" placeholder="Número" value="">
+
+    <div class="tamanhoData">
+      <label for="inputFoneFuncionario">Tefefone:</label>
+      <input type="text" name="inputFoneFuncionario" id="inputFoneFuncionario" placeholder="Telefone" value="">    
+    </div>
+
+    <div class="tamanhoData">
+      <label for="dataNascimentoFuncionario">Data de nascimento:</label>
+      <input type="date" data-clear-btn="false" name="dataNascimentoFuncionario" id="dataNascimentoFuncionario" value="">  
+    </div>
+
+    <label for="inputCpfFuncionario">CPF:</label>
+    <input type="text" name="inputCpfFuncionario" id="inputCpfFuncionario" placeholder="CPF" value=""> 
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Sexo:</legend>
+        <input type="radio" name="radioSexo" id="radioMasculino" value="masculino" >
+        <label for="radioMasculino">Masculino</label>
+        <input type="radio" name="radioSexo" id="radioFeminino" value="feminino">
+        <label for="radioFeminino">Feminino</label>
+    </fieldset>
+
+    <label for="inputFuncaoFuncionario">Função:</label>
+    <input type="text" name="inputFuncaoFuncionario" id="inputFuncaoFuncionario" placeholder="Função" value=""> 
+
+    <div class="tamanhoData">
+      <label for="dataAdmissao">Data de Admissão:</label>
+      <input type="date" data-clear-btn="false" name="dataAdmissao" id="dataAdmissao" value="">
+    </div>
+
+    <label for="cursos">Cursos realizados:</label>
+    <textarea cols="40" rows="8" name="cursos" id="cursos" placeholder="Cursos realizados"></textarea>
+    
+    <label for="escolaridade">Escolaridade:</label>
+    <input type="text" name="escolaridade" id="escolaridade" placeholder="Escolaridade" value="">
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Estado Civil:</legend>
+      <input type="radio" name="radioEstadoCivil" id="radioSolteiro" value="solteiro">
+      <label for="radioSolteiro">Solteiro</label>
+      <input type="radio" name="radioEstadoCivil" id="radioCasado" value="casado">
+      <label for="radioCasado">Casado</label>
+    </fieldset>
+    
+    <div class="tamanhoData">
+      <label for="salario">Salário:</label>
+      <input type="text" name="salario" id="salario" placeholder="Salário" value=""> 
+
+      <label for="login">Login:</label>
+      <input type="text" name="login" id="login" placeholder="Login" value="">
+      
+      <label for="password">Senha:</label>
+      <input type="password" name="password" id="password" placeholder="Senha" value="">
+    </div>
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+      <legend>Nível de Permissão:</legend>
+      <input type="radio" name="radioPermissao" id="permissaoAdmin" value="administrador">
+      <label for="permissaoAdmin">Administrador</label>
+      <input type="radio" name="radioPermissao" id="permissaoComum" value="comum">
+      <label for="permissaoComum">Comum</label>
+    </fieldset>
+    
+
+    <input type="button" id="btnCadFunc" value="Confirmar">        
+  </form>
+</div>

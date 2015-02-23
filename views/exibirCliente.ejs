@@ -1,0 +1,45 @@
+<div id="exibirCliente" data-role="page">
+  <div data-role="header" data-theme="b">
+    <a href="#buscaCliente" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" data-rel="back" ></a>
+    <h1>Dados do Cliente</h1>
+  </div> 
+
+  <form>
+    <label for="exibeNomeCliente">Nome do Cliente:</label>
+    <input type="text" name="exibeNomeCliente" id="exibeNomeCliente" placeholder="Nome do Cliente" value="">
+
+    <label for="exibeEnderecoCliente">Endereço:</label>
+    <input type="text" name="exibeEnderecoCliente" id="exibeClienteRua" placeholder="Rua" value="">
+    <div class="tamanhoData">
+    <input type="text" name="exibeEnderecoCliente" id="exibeClienteNumero" placeholder="Número" value="">
+
+    <label for="exibeFoneCliente">Tefefone:</label>
+    <input type="text" name="exibeFoneCliente" id="exibeFoneCliente" placeholder="Telefone" value="">    
+
+    <label for="exibeDataNascCliente">Data de nascimento:</label>
+    <input type="date" data-clear-btn="false" name="exibeDataNascCliente" id="exibeDataNascCliente" value="">  
+  
+    <label for="exibeCpfCliente">CPF:</label>
+    <input type="text" name="exibeCpfCliente" id="exibeCpfCliente" placeholder="CPF" value=""> 
+    </div>
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+        <legend>Sexo:</legend>
+        <input type="radio" name="exibeSexoCliente" id="exibeSexoClienteMasc" value="masculino">
+        <label for="exibeSexoClienteMasc">Masculino</label>
+        <input type="radio" name="exibeSexoCliente" id="exibeSexoClienteFem" value="feminino">
+        <label for="exibeSexoClienteFem">Feminino</label>
+    </fieldset> 
+
+    <label for="exibePreferenciaHorario">Preferências de Horário:</label>
+    <textarea cols="40" rows="8" name="exibePreferenciaHorario" id="exibePreferenciaHorario" placeholder="Preferências de Horário"></textarea>
+    
+    <label for="exibeLocalTrabalho">Local de Trabalho:</label>
+    <input type="text" name="exibeLocalTrabalho" id="exibeLocalTrabalho" placeholder="Local de Trabalho" value="">
+    
+    <input type="button" data-inline="true" data-icon="delete" id="btnExcluirCli" value="Excluir">
+    <input type="button" data-inline="true" data-icon="edit" id="btnAlterarCli" value="Alterar">
+    <a href="#buscarCliente" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-inline" data-rel="back" >Cancelar</a>
+           
+  </form>
+</div>
